@@ -1,0 +1,84 @@
+<?php
+
+namespace Controllers ;
+use PDO;
+use Engin;
+
+class EnginController extends Controller{
+
+    public function panelengin($params) {
+        $entityManager = $params["em"];
+        $enginRepository = $entityManager->getRepository('Engin');
+        $engins = $enginRepository->findAll();
+
+        if ($this->isLoggedIn()) {
+            echo $this->twig->render('crudEngin.html', ['engins' => $engins, 'params' => $params]); 
+        } else {
+            header('Location: start.php?c=user&t=login');
+        }
+    }
+
+
+    public function createEngin() {
+        if ($this->isLoggedIn()) {
+            echo $this->twig->render('createEngin.html');
+        } else {
+            header('Location: start.php?c=user&t=login');
+        }
+    }
+
+    public function insert($params) {
+        $em=$params['em'];
+
+        $nom=($_POST['full_nom']);
+        $photoLink=file_get_contents($_FILES['photoLink']['tmp_name']);
+
+        $newEngin = new Engin();
+        $newEngin->setFullNom($nom);
+        $newEngin->setPhotoLink($photoLink);
+
+        $em->persist($newEngin);
+        $em->flush();
+
+        header('Location: start.php?c=engin&t=panelengin');
+    }
+
+    public function editEngin($params) {
+        $id=($params['get']['id']);
+        $em=$params['em'];
+        $engin=$em->find('Engin',$id);
+        echo $this->twig->render('editEngin.html',['engin'=>$engin]);
+    }
+
+    public function updateEngin($params) {
+
+        $em = $params['em'];
+        $id =($params['post']['id']);
+    
+        $engin = $em->find('Engin', $id);
+    
+        $engin->setFullNom($params['post']['nom_engin']);
+        $engin->setPhotoLink(file_get_contents($_FILES['photoLink']['tmp_name']));
+    
+        
+            $em->flush();
+        
+            header('Location: start.php?c=engin&t=panelengin');
+            exit();
+
+    }
+
+    public function deleteEngin($params) {
+        $id=($params['get']['id']);
+        $em=$params['em'];
+        $engin=$em->find('Engin',$id);
+
+        $em->remove($engin);
+        $em->flush();
+
+        header('Location: start.php?c=engin&t=panelengin');
+    }
+    
+
+}
+?>

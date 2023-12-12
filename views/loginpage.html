@@ -1,0 +1,39 @@
+<!-- loginpage.html (page de connexion html) -->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>{% block title %}Se connecter{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="http://195.154.118.169/sofyan/pompier/views/loginstyle.css">
+</head>
+
+<style>
+</style>
+
+<body>
+    {% block body %}
+    <h1>Se connecter</h1>
+    <div class="login-form">
+        <form method="post" action="start.php?c=user&t=veriflogin">
+            <img src="http://195.154.118.169/sofyan/pompier/views/logo_nso.png" alt="Logo NSO" class="logo_nso" />
+            {% if error %}
+                <p style="color: red;">{{ error }}</p>
+            {% endif %}
+            <label for="email">Email :</label>
+            <input type="email" name="email" id="email" /><br />
+
+            <label for="password">Mot De Passe :</label>
+            <input type="password" name="password" id="password" /><br />
+
+            <input type="submit" value="Se connecter" />
+
+            <p>Pas de compte ? <a href="{{url}}start.php?c=user&t=signin">S'inscrire.</a></p>
+        </form>
+    </div>
+    {% endblock %}
+</body>
+
+</html>

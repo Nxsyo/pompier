@@ -1,0 +1,15 @@
+{% extends 'adminbasepage.html' %} {% block title %} Créer Un Engin {% endblock %}
+{% block body %}
+<h1>Créer un nouvel engin</h1>
+<div class="engin-form">
+    <form method="post" action="start.php?c=engin&t=insert" enctype="multipart/form-data">
+        <label for="full_nom">Nom de l'engin :</label>
+        <input type='text' name='full_nom' id='full_nom' /><br />
+
+        <label for="photoLink">Photo :</label>
+        <input type="file" name="photoLink" id="photoLink" /><br />
+
+        <input type="submit" value="Créer l'engin" />
+    </form>
+</div>
+{% endblock %}

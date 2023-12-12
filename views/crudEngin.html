@@ -1,0 +1,46 @@
+{% extends 'adminbasepage.html' %}
+
+{% block body %}
+    <style>
+        h1 {
+            color : blue;
+        }
+    </style>
+    <h1>Liste des engins</h1>
+    <a href="{{url}}start.php?c=engin&t=createEngin" class="create-link">Create</a>
+    <table id="enginsTable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Photo</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for engin in engins %}
+            <tr>
+                <td>{{ engin.id }}</td>
+                <td>{{ engin.fullnom }}</td>
+
+                <td><img width=100px src="data:image/png;base64,{{engin.photoLink }}"/></td>
+                <td>
+                    <a href="{{url}}start.php?c=engin&t=editEngin&id={{engin.id}}">Edit</a>
+                </td>
+                <td>
+                    <a href="{{url}}start.php?c=engin&t=deleteEngin&id={{engin.id}}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% block javascript %}
+        <script>
+            $(document).ready(function () {
+                $("#enginsTable").DataTable();
+            });
+        </script>
+    {% endblock %}
+{% endblock %}

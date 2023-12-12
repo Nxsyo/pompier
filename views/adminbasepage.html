@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Panel Admin{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+</head>
+
+<body>
+
+    <!-- Contenu spécifique de la page -->
+    {% block body %}
+
+    <h1>Bonjour {{ user_prenom }} !</h1>
+
+    <ul>
+        <li><a href="{{url}}start.php?c=user&t=admindisplay">Home</a></li>
+        <li><a href="{{url}}start.php?c=engin&t=panelengin">Editer les engins</a></li>
+        <li><a href="{{url}}start.php?c=engin&t=paneltype">Editer les types</a></li>
+    </ul>
+
+    <a href="{{url}}start.php?c=user&t=logout">Déconnexion</a>
+
+
+
+    {% endblock %}
+
+    <!-- Scripts JavaScript spécifiques de la page -->
+    {% block javascript %}{% endblock %}
+
+    <!-- Scripts JavaScript communs à toutes les pages -->
+    <script>
+        $(document).ready(function () {
+            $("#enginsTable").DataTable();
+        });
+    </script>
+
+</body>
+</html>

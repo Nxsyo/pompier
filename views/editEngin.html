@@ -1,0 +1,22 @@
+{% extends "adminbasepage.html" %} {% block title %} Modifier l'engin {% endblock%}
+{% block body %}
+<div class="editEngin-form">
+    <h1>Modifier l'engin</h1>
+    <form method="post" action="start.php?c=user&t=updateEngin" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="{{ engin.id }}" />
+        <label for="nom_engin">Nom :</label>
+        <input type="text" name="nom_engin" id="nom_engin" value="{{ engin.fullnom }}" /><br />
+
+        <label for="photoLink">Photo :</label>
+        <input
+          type="file"
+          name="photoLink"
+          id="photoLink"
+          value="{{ engin.photoLink }}"
+        />
+        <br />
+
+    <input type="submit" value="Enregistrer les modifications" />
+  </form>
+</div>
+{% endblock %}

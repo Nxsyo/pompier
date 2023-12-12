@@ -1,0 +1,37 @@
+<!-- page de connexion html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}S'inscrire{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+{% block body %}
+<h1>S'inscrire</h1>
+<div class="sign-in-form">
+    <form method="post" action="start.php?c=user&t=insert">
+        <label for="nom">Nom :</label>
+        <input type="text" name="nom" id="nom" /><br />
+
+        <label for="prenom">Prenom :</label>
+        <input type="text" name="prenom" id="prenom" /><br />
+
+        <label for="email">Email :</label>
+        <input type="email" name="email" id="email" /><br />
+
+        <label for="password">Mot De Passe :</label>
+        <input type="password" name="password" id="password" /><br />
+
+        <input type="submit" value="S'inscrire" />
+    </form>
+</div>
+<p>Deja un compte ? <a href="{{url}}start.php?c=user&t=login">Se connecter.</a></p>
+
+{% endblock %}
+</body>
+
+</html>
