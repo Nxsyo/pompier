@@ -90,7 +90,7 @@ class UserController extends Controller
             echo $this->twig->render('adminbasepage.html', ['user_nom' => $user_nom, 'user_prenom' => $user_prenom]);
             
         } else {
-            header('Location: start.php?c=user&t=signin');
+            header('Location: start.php?c=user&t=login');
         }
     }
 }
