@@ -1,0 +1,22 @@
+{% extends "adminbasepage.html" %} {% block title %} Modifier l'utilisateur {% endblock%}
+{% block body %}
+<div class="editUser-form">
+    <h1>Modifier l'utilisateur</h1>
+    <form method="post" action="start.php?c=user&t=updateUser">
+        <input type="hidden" name="id" value="{{ user.id }}" />
+        <label for="nom">Nom :</label>
+        <input type="text" name="nom" id="nom" value="{{ user.nom }}" /><br />
+
+        <label for="prenom">Prénom :</label>
+        <input type="text" name="prenom" id="prenom" value="{{ user.prenom }}" /><br />
+
+        <label for="email">Adresse Mail :</label>
+        <input type="text" name="email" id="email" value="{{ user.email }}" /><br />
+
+        <label for="password">Mot De Passe :</label>
+        <input type="password" name="password" id="password" value="{{ user.password }}" /><br />
+
+    <input type="submit" value="Enregistrer les modifications" />
+  </form>
+</div>
+{% endblock %}

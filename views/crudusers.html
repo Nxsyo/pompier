@@ -1,0 +1,45 @@
+{% extends 'adminbasepage.html' %}
+
+{% block body %}
+    <h1>Liste des Utilisateurs</h1>
+    <a href="{{url}}start.php?c=user&t=createUser" class="create-link">Create</a>
+    <table id="usersTable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Adresse Mail</th>
+                <th>Mot De Passe</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.nom }}</td>
+                <td>{{ user.prenom }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.password }}</td>
+
+                <td>
+                    <a href="{{url}}start.php?c=user&t=editUser&id={{user.id}}">Edit</a>
+                </td>
+                <td>
+                    <a href="{{url}}start.php?c=user&t=deleteUser&id={{user.id}}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% block javascript %}
+        <script>
+            $(document).ready(function () {
+                $("#usersTable").DataTable();
+            });
+        </script>
+    {% endblock %}
+{% endblock %}

@@ -4,10 +4,10 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
-    overflow-y: hidden; /* Désactive la barre de défilement verticale */
-    background-image: url('http://195.154.118.169/sofyan/pompier/views/background_cs.jpg'); /*background temporaire */
-    background-size: 100%;
-    background-position: center center; /* Centre l'image horizontalement et verticalement */
+    overflow-y: hidden;
+    background-image: url('http://195.154.118.169/sofyan/pompier/views/background_cs.png');
+    background-size: 100% auto;
+    background-position: center center;
     background-repeat: no-repeat;
 }
 

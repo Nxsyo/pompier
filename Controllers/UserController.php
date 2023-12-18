@@ -52,6 +52,26 @@ class UserController extends Controller
         exit();
     }
 
+    public function panelusers($params) {
+        $entityManager = $params["em"];
+        $enginRepository = $entityManager->getRepository('User');
+        $users = $enginRepository->findAll();
+
+        if ($this->isLoggedIn()) {
+            echo $this->twig->render('crudusers.html', ['users' => $users, 'params' => $params]); 
+        } else {
+            header('Location: start.php?c=user&t=login');
+        }
+    }
+
+    public function createUser() {
+        if ($this->isLoggedIn()) {
+            echo $this->twig->render('createUser.html');
+        } else {
+            header('Location: start.php?c=user&t=login');
+        }
+    }
+
     public function insert($params)
     {
         $em = $params['em'];
@@ -77,7 +97,44 @@ class UserController extends Controller
         $_SESSION['user_email'] = $newUser->getEmail(); 
 
 
-        header('Location: start.php?c=user&t=admindisplay');
+        header('Location: start.php?c=user&t=panelusers');
+    }
+
+    public function editUser($params) {
+        $id=($params['get']['id']);
+        $em=$params['em'];
+        $user=$em->find('User',$id);
+        echo $this->twig->render('editUser.html',['user'=>$user]);
+    }
+
+    public function updateUser($params) {
+
+        $em = $params['em'];
+        $id =($params['post']['id']);
+    
+        $user = $em->find('User', $id);
+    
+        $user->setNom($params['post']['nom']);
+        $user->setPrenom($params['post']['prenom']);
+        $user->setEmail($params['post']['email']);
+        $user->setPassword($params['post']['password']);
+        
+        $em->flush();
+        
+            header('Location: start.php?c=user&t=panelusers');
+            exit();
+
+    }
+
+    public function deleteUser($params) {
+        $id=($params['get']['id']);
+        $em=$params['em'];
+        $user=$em->find('User',$id);
+
+        $em->remove($user);
+        $em->flush();
+
+        header('Location: start.php?c=user&t=panelusers');
     }
 
     public function admindisplay($params) {
