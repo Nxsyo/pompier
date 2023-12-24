@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Panel Admin{% endblock %}</title>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="http://195.154.118.169/sofyan/pompier/views/adminpage.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
 </head>
@@ -16,17 +16,28 @@
     {% block body %}
 
     <h1>Bonjour {{ user_prenom }} !</h1>
-
-    <ul>
-        <li><a href="{{url}}start.php?c=user&t=admindisplay">Home</a></li>
-        <li><a href="{{url}}start.php?c=user&t=panelusers">Editer les utilisateurs</a></li>
-        <li><a href="{{url}}start.php?c=engin&t=panelengin">Editer les engins</a></li>
-        <li><a href="{{url}}start.php?c=materiel&t=panelmateriel">Editer le materiel</a></li>
-    </ul>
-
     <a href="{{url}}start.php?c=user&t=logout">Déconnexion</a>
 
-
+    <div class="all-card">
+        <div class="card-users">
+            <img class="card-image" src="chemin/vers/votre/image_users.jpg" alt="Image Users">
+            <div class="card-content">
+                <li><a href="{{url}}start.php?c=user&t=panelusers" class="card-link">Editer les utilisateurs</a></li>
+            </div>
+        </div>
+        <div class="card-engin">
+            <img class="card-image" src="chemin/vers/votre/image_engin.jpg" alt="Image Engin">
+            <div class="card-content">
+                <li><a href="{{url}}start.php?c=engin&t=panelengin" class="card-link">Editer les engins</a></li>
+            </div>
+        </div>
+        <div class="card-materiel"> 
+            <img class="card-image" src="chemin/vers/votre/image_materiel.jpg" alt="Image Materiel">
+            <div class="card-content">
+                <li><a href="{{url}}start.php?c=materiel&t=panelmateriel" class="card-link">Editer le materiel</a></li>
+            </div>
+        </div>
+    </div>
 
     {% endblock %}
 
