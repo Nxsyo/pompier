@@ -5,10 +5,10 @@ body {
     padding: 0;
     height: 100vh;
     overflow-y: hidden;
-    background-image: url('http://195.154.118.169/sofyan/pompier/views/background_cs.png');
+    /* background-image: url('http://195.154.118.169/sofyan/pompier/views/background_cs.png');
     background-size: 100% auto;
     background-position: center center;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
 }
 
 .logo_nso    {
@@ -16,7 +16,7 @@ body {
     height: auto;
     align-items: center;
 }
-
+    
 .login-form {
     position: absolute;
     left: 50%;
@@ -36,7 +36,7 @@ body {
     height: 550px;
 }
 
-h1 {
+h2 {
     text-align: center;
     color: #333;
     text-transform: uppercase;

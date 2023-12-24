@@ -1,0 +1,44 @@
+{% extends 'adminbasepage.html' %}
+
+{% block body %}
+    <a href="{{url}}start.php?c=user&t=admindisplay">Home</a>
+    <h1>Liste du Materiel</h1>
+    <a href="{{url}}start.php?c=materiel&t=createMateriel" class="create-link">Create</a>
+    <table id="materielsTable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Photo</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for materiel in materiels %}
+            <tr>
+                <td>{{ materiel.id }}</td>
+                <td>{{ materiel.nom }}</td>
+                <td>{{ materiel.description }}</td>
+                <td><img width=100px src="data:image/png;base64,{{ materiel.photoLink }}"/></td>
+
+                <td>
+                    <a href="{{url}}start.php?c=materiel&t=editMateriel&id={{materiel.id}}">Edit</a>
+                </td>
+                <td>
+                    <a href="{{url}}start.php?c=materiel&t=deleteMateriel&id={{materiel.id}}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% block javascript %}
+        <script>
+            $(document).ready(function () {
+                $("#materielsTable").DataTable();
+            });
+        </script>
+    {% endblock %}
+{% endblock %}

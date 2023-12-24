@@ -1,6 +1,7 @@
 {% extends 'adminbasepage.html' %}
 
 {% block body %}
+    <a href="{{url}}start.php?c=user&t=admindisplay">Home</a>
     <h1>Liste des engins</h1>
     <a href="{{url}}start.php?c=engin&t=createEngin" class="create-link">Create</a>
     <table id="enginsTable">
@@ -19,7 +20,7 @@
                 <td>{{ engin.id }}</td>
                 <td>{{ engin.fullnom }}</td>
 
-                <td><img width=100px src="data:image/png;base64,{{engin.photoLink }}"/></td>
+                <td><img width=100px src="data:image/png;base64,{{ engin.photoLink }}"/></td>
                 <td>
                     <a href="{{url}}start.php?c=engin&t=editEngin&id={{engin.id}}">Edit</a>
                 </td>

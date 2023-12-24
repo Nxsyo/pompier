@@ -5,8 +5,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\ManyToOne;
 
 #[ORM\Entity]
-#[ORM\Table(name: 'users')]
-class User
+#[ORM\Table(name: 'materiels')]
+class Materiel
 {
     #[ORM\Id]
     #[ORM\Column(type: 'integer')]
@@ -15,11 +15,13 @@ class User
     #[ORM\Column(type: 'string')]
     private string $nom;
     #[ORM\Column(type: 'string')]
-    private string $prenom;
+    private string $photoLink;
     #[ORM\Column(type: 'string')]
-    private string $email;
-    #[ORM\Column(type: 'string')]
-    private string $password;
+    private string $description;
+    #[ManyToOne(targetEntity: Engin::class)]
+    #[JoinColumn(name: 'engin_id', referencedColumnName:'id')]
+    private Engin|null $engin = null;
+
 
     /**
      * Get id.
@@ -36,7 +38,7 @@ class User
      *
      * @param string $nom
      *
-     * @return User
+     * @return Materiel
      */
     public function setNom($nom)
     {
@@ -56,74 +58,74 @@ class User
     }
 
     /**
-     * Set prenom.
+     * Set photoLink.
      *
-     * @param string $prenom
+     * @param string $photoLink
      *
-     * @return User
+     * @return Materiel
      */
-    public function setPrenom($prenom)
+    public function setPhotoLink($photoLink)
     {
-        $this->prenom = $prenom;
+        $this->photoLink = $photoLink;
 
         return $this;
     }
 
     /**
-     * Get prenom.
+     * Get photoLink.
      *
      * @return string
      */
-    public function getPrenom()
+    public function getPhotoLink()
     {
-        return $this->prenom;
+        return base64_encode($this->photoLink);
     }
 
     /**
-     * Set email.
+     * Set description.
      *
-     * @param string $email
+     * @param string $description
      *
-     * @return User
+     * @return Materiel
      */
-    public function setEmail($email)
+    public function setDescription($description)
     {
-        $this->email = $email;
+        $this->description = $description;
 
         return $this;
     }
 
     /**
-     * Get email.
+     * Get description.
      *
      * @return string
      */
-    public function getEmail()
+    public function getDescription()
     {
-        return $this->email;
+        return $this->description;
     }
 
     /**
-     * Set password.
+     * Set engin.
      *
-     * @param string $password
+     * @param \Engin|null $engin
      *
-     * @return User
+     * @return Materiel
      */
-    public function setPassword($password)
+    public function setEngin(\Engin $engin = null)
     {
-        $this->password = $password;
+        $this->engin = $engin;
 
         return $this;
     }
 
     /**
-     * Get password.
+     * Get engin.
      *
-     * @return string
+     * @return \Engin|null
      */
-    public function getPassword()
+    public function getEngin()
     {
-        return $this->password;
+        return $this->engin;
     }
 }

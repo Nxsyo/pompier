@@ -1,6 +1,7 @@
 {% extends 'adminbasepage.html' %}
 
 {% block body %}
+    <a href="{{url}}start.php?c=user&t=admindisplay">Home</a>
     <h1>Liste des Utilisateurs</h1>
     <a href="{{url}}start.php?c=user&t=createUser" class="create-link">Create</a>
     <table id="usersTable">

@@ -47,7 +47,12 @@ class EnginController extends Controller{
         $id=($params['get']['id']);
         $em=$params['em'];
         $engin=$em->find('Engin',$id);
-        echo $this->twig->render('editEngin.html',['engin'=>$engin]);
+
+        if ($this->isLoggedIn()) {
+            echo $this->twig->render('editEngin.html',['engin'=>$engin]);
+        } else {
+            header('Location: start.php?c=user&t=login');
+        }
     }
 
     public function updateEngin($params) {
@@ -76,7 +81,11 @@ class EnginController extends Controller{
         $em->remove($engin);
         $em->flush();
 
-        header('Location: start.php?c=engin&t=panelengin');
+        if ($this->isLoggedIn()) {
+            header('Location: start.php?c=engin&t=panelengin');
+        } else {
+            header('Location: start.php?c=user&t=login');
+        }
     }
     
 

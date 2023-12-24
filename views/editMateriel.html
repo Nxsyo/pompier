@@ -1,0 +1,30 @@
+{% extends "adminbasepage.html" %} {% block title %} Modifier le Materiel {% endblock%}
+{% block body %}
+<div class="edit-materiel">
+  <h1>Modifier le Materiel</h1>
+  <form method="post" action="start.php?c=materiel&t=updateMateriel" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="{{ materiel.id }}" />
+      <label for="nom">Nom :</label>
+      <input type='text' name='nom' id='nom' value="{{ materiel.nom }}"/><br />
+
+      <label for="description">Description :</label>
+      <input type="text" name="description" id="description" value="{{ materiel.description }}"><br />
+
+      <label for="engin">Engin :</label>
+    <select name="engin" id="engin">
+      {% for engin in engins %}
+        {% if engin.id == materiel.engin.id %}
+          <option value="{{ engin.id }}" selected>{{ engin.fullnom }}</option>
+        {% else %}
+          <option value="{{ engin.id }}">{{ engin.fullnom }}</option>
+        {% endif %}
+      {% endfor %}
+    </select><br />
+
+      <label for="photoLink">Photo :</label>
+      <input type="file" name="photoLink" id="photoLink" value="{{ materiel.photoLink  }}" /><br />
+
+      <input type="submit" value="Modifier le Materiel" />
+  </form>
+</div>
+{% endblock %}

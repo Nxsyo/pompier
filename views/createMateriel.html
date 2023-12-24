@@ -1,0 +1,33 @@
+{% extends 'adminbasepage.html' %} {% block title %} Ajouter un Materiel {% endblock %}
+{% block body %}
+
+<h1>Ajouter un Materiel</h1>
+
+<style>
+    .inputDesc {
+        width: 200px;
+    }
+</style>
+
+<div class="materiel-form">
+    <form method="post" action="start.php?c=materiel&t=insert" enctype="multipart/form-data">
+        <label for="nom">Nom :</label>
+        <input type='text' name='nom' id='nom' /><br />
+
+        <label for="description">Description :</label>
+        <textarea name="description" id="description" style='width: 200px; height: 100px;'></textarea><br />
+
+        <label for="engin">Engin :</label>
+        <select name="engin" id="engin">
+            {% for engin in engins %}
+                <option value="{{ engin.id }}">{{ engin.fullnom }}</option>
+            {% endfor %}
+        </select><br />
+
+        <label for="photoLink">Photo :</label>
+        <input type="file" name="photoLink" id="photoLink" /><br />
+
+        <input type="submit" value="Créer l'utilisateur" />
+    </form>
+</div>
+{% endblock %}
