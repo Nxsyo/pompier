@@ -31,10 +31,12 @@ class EnginController extends Controller{
         $em=$params['em'];
 
         $nom=($_POST['full_nom']);
+        $abrnom=($_POST['abr_nom']);
         $photoLink=file_get_contents($_FILES['photoLink']['tmp_name']);
 
         $newEngin = new Engin();
         $newEngin->setFullNom($nom);
+        $newEngin->setAbrNom($abrnom);
         $newEngin->setPhotoLink($photoLink);
 
         $em->persist($newEngin);
@@ -63,6 +65,7 @@ class EnginController extends Controller{
         $engin = $em->find('Engin', $id);
     
         $engin->setFullNom($params['post']['nom_engin']);
+        $engin->setAbrNom($params['post']['nom_abr']);
         $engin->setPhotoLink(file_get_contents($_FILES['photoLink']['tmp_name']));
     
         

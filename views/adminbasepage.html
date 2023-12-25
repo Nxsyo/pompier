@@ -14,8 +14,10 @@
 
     <!-- Contenu spécifique de la page -->
     {% block body %}
-
-    <h1>Bonjour {{ user_prenom }} !</h1>
+    <header class="header-basepage">
+        <img src="http://195.154.118.169/sofyan/pompier/views/logo_nso.png" alt="Logo NSO" class="logo_nso" />
+        <h1>Bonjour {{ user_prenom }} !</h1>
+    </header>
     <a href="{{url}}start.php?c=user&t=logout" class="logout-btn">Déconnexion</a>
 
     <div class="card-container">

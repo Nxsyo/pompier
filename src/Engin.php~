@@ -16,8 +16,91 @@ class Engin
     private string $full_nom;
     #[ORM\Column(type: 'string')]
     private string $photoLink;
+    #[ORM\Column(type: 'string')]
+    private string $abr_nom;
     #[OneToMany(mappedBy: 'engin', targetEntity: Materiel::class)]
     private Collection $materiels;
 
 
+    /**
+     * Get id.
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set fullNom.
+     *
+     * @param string $fullNom
+     *
+     * @return Engin
+     */
+    public function setFullNom($fullNom)
+    {
+        $this->full_nom = $fullNom;
+
+        return $this;
+    }
+
+    /**
+     * Get fullNom.
+     *
+     * @return string
+     */
+    public function getFullNom()
+    {
+        return $this->full_nom;
+    }
+
+    /**
+     * Set photoLink.
+     *
+     * @param string $photoLink
+     *
+     * @return Engin
+     */
+    public function setPhotoLink($photoLink)
+    {
+        $this->photoLink = $photoLink;
+
+        return $this;
+    }
+
+    /**
+     * Get photoLink.
+     *
+     * @return string
+     */
+    public function getPhotoLink()
+    {
+        return $this->photoLink;
+    }
+
+    /**
+     * Set abrNom.
+     *
+     * @param string $abrNom
+     *
+     * @return Engin
+     */
+    public function setAbrNom($abrNom)
+    {
+        $this->abr_nom = $abrNom;
+
+        return $this;
+    }
+
+    /**
+     * Get abrNom.
+     *
+     * @return string
+     */
+    public function getAbrNom()
+    {
+        return $this->abr_nom;
+    }
 }

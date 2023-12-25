@@ -5,7 +5,22 @@ body {
     margin: 0;
 }
 
-h1 {
+.header-basepage {
+    display: flex;
+    margin-right: 100px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 20px;   
+}
+
+.logo_nso   {
+    width: 225px;
+    height: auto;
+}
+
+h1 {    
+    top: 50px;
     color: #343a40;
     text-align: center;
     margin: 20px 0;
@@ -34,7 +49,7 @@ h1 {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    margin-top: 150px;
+    margin-top: 60px;
 }
 
 .user-card,

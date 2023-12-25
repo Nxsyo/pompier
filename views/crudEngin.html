@@ -9,6 +9,7 @@
             <tr>
                 <th>Id</th>
                 <th>Nom</th>
+                <th>Nom abrégé</th>
                 <th>Photo</th>
                 <th></th>
                 <th></th>
@@ -19,7 +20,7 @@
             <tr>
                 <td>{{ engin.id }}</td>
                 <td>{{ engin.fullnom }}</td>
-
+                <td>{{ engin.abrNom }}</td>
                 <td><img width=100px src="data:image/png;base64,{{ engin.photoLink }}"/></td>
                 <td>
                     <a href="{{url}}start.php?c=engin&t=editEngin&id={{engin.id}}">Edit</a>
