@@ -16,26 +16,20 @@
     {% block body %}
 
     <h1>Bonjour {{ user_prenom }} !</h1>
-    <a href="{{url}}start.php?c=user&t=logout">Déconnexion</a>
+    <a href="{{url}}start.php?c=user&t=logout" class="logout-btn">Déconnexion</a>
 
-    <div class="all-card">
-        <div class="card-users">
-            <img class="card-image" src="chemin/vers/votre/image_users.jpg" alt="Image Users">
-            <div class="card-content">
-                <li><a href="{{url}}start.php?c=user&t=panelusers" class="card-link">Editer les utilisateurs</a></li>
-            </div>
+    <div class="card-container">
+        <div class="user-card">
+            <a href="{{url}}start.php?c=user&t=panelusers" class="card-link">Editer les utilisateurs</a>
         </div>
-        <div class="card-engin">
-            <img class="card-image" src="chemin/vers/votre/image_engin.jpg" alt="Image Engin">
-            <div class="card-content">
-                <li><a href="{{url}}start.php?c=engin&t=panelengin" class="card-link">Editer les engins</a></li>
-            </div>
+        <div class="engin-card">
+            <a href="{{url}}start.php?c=engin&t=panelengin" class="card-link">Editer les engins</a>
         </div>
-        <div class="card-materiel"> 
-            <img class="card-image" src="chemin/vers/votre/image_materiel.jpg" alt="Image Materiel">
-            <div class="card-content">
-                <li><a href="{{url}}start.php?c=materiel&t=panelmateriel" class="card-link">Editer le materiel</a></li>
-            </div>
+        <div class="materiel-card">
+            <a href="{{url}}start.php?c=materiel&t=panelmateriel" class="card-link">Editer le materiel</a>
+        </div>
+        <div class="personnel-card">
+            <a href="{{url}}start.php?c=personnel&t=panelpersonnel" class="card-link">Editer le personnel</a>
         </div>
     </div>
 

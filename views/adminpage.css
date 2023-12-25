@@ -4,57 +4,121 @@ body {
     background-color: #eef1f4;
     margin: 0;
 }
-/* En-tête */
+
 h1 {
     color: #343a40;
     text-align: center;
     margin: 20px 0;
 }
 
-.all-card {
-    display: flex;
-    justify-content:center;
-    margin-top: 30px;
-}
-
-.card-users,
-.card-engin,
-.card-materiel {
-    width: 300px; /* Ajustez la largeur selon vos besoins */
-    padding: 175px 10px 15px 10px;
-    margin: 50px;
-    border: 1px solid #ced4da;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-
-.card-link {
-    text-align: center;
+.logout-btn {
+    text-transform: uppercase;
+    position: absolute;
+    top: 25px;
+    right: 40px;
     text-decoration: none;
+    font-size: 15px;
     color: #fff;
     padding: 10px 20px;
-    display : block;
-    margin: 0 10px;
-    background-color: #4caf50;
-    border-radius: 5px;
+    background-color: #dc1a00;
+    border-radius: 8px;
     transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: rgb(196, 0, 0);
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 150px;
+}
+
+.user-card,
+.engin-card,
+.materiel-card,
+.personnel-card {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    width: 300px;
+    height: 200px;
+    margin: 30px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-link {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-decoration: none;
+    font-size: 12px;
+    color: #fff;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    z-index: 2;
 }
 
 .card-link:hover {
     background-color: rgb(66, 146, 70);
 }
 
-.card-users:hover,
-.card-engin:hover,
-.card-materiel:hover {
+.user-card::before,
+.engin-card::before,
+.materiel-card::before,
+.personnel-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Couleur sombre semi-transparente */
+    z-index: 1;
+    border-radius: 10px;
+}
+
+.user-card {
+    background-image: url("http://195.154.118.169/sofyan/pompier/views/utilisateurs.png");
+    background-size: cover;
+    transition: transform 0.3s ease;
+}
+
+.engin-card {
+    background-image: url("http://195.154.118.169/sofyan/pompier/views/engin.jpg");
+    background-size: cover;
+    transition: transform 0.3s ease;
+}
+
+.materiel-card {
+    background-image: url("http://195.154.118.169/sofyan/pompier/views/materiel.jpg");
+    background-size: cover;
+    transition: transform 0.3s ease;
+}
+
+.personnel-card {
+    background-image: url("http://195.154.118.169/sofyan/pompier/views/personnel.jpg");
+    background-size: cover;
+    transition: transform 0.3s ease;
+}
+
+.user-card:hover,
+.engin-card:hover,
+.materiel-card:hover,
+.personnel-card:hover {
     transform: translateY(-5px);
 }
 
-li {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.card-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    z-index: 0;
 }
