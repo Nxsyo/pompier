@@ -160,6 +160,22 @@ h1 {
     transition: background-color 0.3s ease;
 }
 
+.create-link {
+    padding : 10px 20px;
+    margin: 30px;
+    border-radius: 8px;
+    font-size: 15px;
+    text-decoration: none;
+    background-color: #4caf50;
+    color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.create-link:hover{
+    background-color: #36973a;
+}
+
 .delete-btn:hover {
     background-color: rgb(196, 0, 0);
 }
@@ -188,7 +204,7 @@ h1 {
 }
 
 .navbar{
-    margin: 70px 400px 80px 450px;
+    margin: 70px 350px 80px 450px;
     border-radius: 100px;
     display: flex;
     align-items: center;
@@ -221,7 +237,7 @@ h1 {
 }
 
 .logo-navbar {
-    margin: -65px 350px 40px 350px;
+    margin: -67px 350px 40px 325px;
     position: absolute;
 }
 
