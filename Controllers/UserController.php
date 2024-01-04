@@ -45,7 +45,7 @@ class UserController extends Controller
 
     }
 
-    public function logout()    //methode qui permet de se deconnecter
+    public function logout()
     {
         session_destroy();
         header('Location: start.php?c=user&t=login');
@@ -53,24 +53,35 @@ class UserController extends Controller
     }
 
     public function panelusers($params) {
-        $entityManager = $params["em"];
-        $enginRepository = $entityManager->getRepository('User');
-        $users = $enginRepository->findAll();
-
         if ($this->isLoggedIn()) {
-            echo $this->twig->render('crudusers.html', ['users' => $users, 'params' => $params]); 
+            $entityManager = $params["em"];
+            $enginRepository = $entityManager->getRepository('User');
+            $users = $enginRepository->findAll();
+    
+            if ($this->hasSpecificEmail()) {
+                echo $this->twig->render('crudusers.html', ['users' => $users, 'params' => $params]); 
+            } else {
+                echo $this->twig->render('error.html', ['message' => 'Accès non autorisé.']);
+            }
         } else {
             header('Location: start.php?c=user&t=login');
+            exit();
         }
     }
 
     public function createUser() {
-        if ($this->isLoggedIn()) {
+        if ($this->isLoggedIn() && $this->hasSpecificEmail()) {
             echo $this->twig->render('createUser.html');
         } else {
-            header('Location: start.php?c=user&t=login');
+            if ($this->isLoggedIn()) {
+                echo $this->twig->render('error.html', ['message' => 'Accès non autorisé.']);
+            } else {
+                header('Location: start.php?c=user&t=login');
+            }
+            exit();
         }
     }
+    
 
     public function insert($params)
     {
@@ -91,21 +102,32 @@ class UserController extends Controller
         $em->persist($newUser);
         $em->flush();
 
-        $_SESSION['user_id'] = $newUser->getId();
-        $_SESSION['user_nom'] = $newUser->getNom(); 
-        $_SESSION['user_prenom'] = $newUser->getPrenom(); 
-        $_SESSION['user_email'] = $newUser->getEmail(); 
+        // $_SESSION['user_id'] = $newUser->getId();
+        // $_SESSION['user_nom'] = $newUser->getNom(); 
+        // $_SESSION['user_prenom'] = $newUser->getPrenom(); 
+        // $_SESSION['user_email'] = $newUser->getEmail(); 
 
 
         header('Location: start.php?c=user&t=panelusers');
     }
 
     public function editUser($params) {
-        $id=($params['get']['id']);
-        $em=$params['em'];
-        $user=$em->find('User',$id);
-        echo $this->twig->render('editUser.html',['user'=>$user]);
+        $id = ($params['get']['id']);
+        $em = $params['em'];
+        $user = $em->find('User', $id);
+    
+        if ($this->isLoggedIn() && $this->hasSpecificEmail()) {
+            echo $this->twig->render('editUser.html', ['user' => $user]);
+        } else {
+            if ($this->isLoggedIn()) {
+                echo $this->twig->render('error.html', ['message' => 'Accès non autorisé.']);
+            } else {
+                header('Location: start.php?c=user&t=login');
+            }
+            exit();
+        }
     }
+    
 
     public function updateUser($params) {
 
@@ -127,15 +149,23 @@ class UserController extends Controller
     }
 
     public function deleteUser($params) {
-        $id=($params['get']['id']);
-        $em=$params['em'];
-        $user=$em->find('User',$id);
-
-        $em->remove($user);
-        $em->flush();
-
-        header('Location: start.php?c=user&t=panelusers');
+        $id = ($params['get']['id']);
+        $em = $params['em'];
+        $user = $em->find('User', $id);
+    
+        if ($this->isLoggedIn() && $this->hasSpecificEmail()) {
+            $em->remove($user);
+            $em->flush();
+            header('Location: start.php?c=user&t=panelusers');
+        } else {
+            if ($this->isLoggedIn()) {
+                echo $this->twig->render('error.html', ['message' => 'Accès non autorisé.']);
+            } else {
+                header('Location: start.php?c=user&t=login');
+            }
+        }
     }
+    
 
     public function admindisplay($params) {
         

@@ -1,7 +1,19 @@
 {% extends 'adminbasepage.html' %}
 
 {% block body %}
-    <a href="{{url}}start.php?c=user&t=admindisplay">Home</a>
+    <div class="top-page">
+        <a href="{{url}}start.php?c=user&t=admindisplay"><img width="225px"src="http://195.154.118.169/sofyan/pompier/views/logo_nso.png" class="logo-navbar"/></a>
+        <nav class="navbar">
+            <a href="{{url}}start.php?c=user&t=panelusers" class="nav-link">Utilisateurs</a>
+            <a href="{{url}}start.php?c=engin&t=panelengin" class="nav-link">Engins</a>
+            <a href="{{url}}start.php?c=materiel&t=panelmateriel" class="nav-link">Materiels</a>
+            <a href="{{url}}start.php?c=personnel&t=panelpersonnel" class="nav-link">Personnels</a>
+        </nav>
+    </div>
+    <!-- <div class="home-content">
+        <img width=20px src="http://195.154.118.169/sofyan/pompier/views/home-icons.png" alt="Icone Home" class="icon_home" />
+        <a href="{{url}}start.php?c=user&t=admindisplay" class="home-btn">Page d'accueil</a>
+    </div> -->
     <h1>Liste des Utilisateurs</h1>
     <a href="{{url}}start.php?c=user&t=createUser" class="create-link">Create</a>
     <table id="usersTable">
@@ -26,10 +38,10 @@
                 <td>{{ user.password }}</td>
 
                 <td>
-                    <a href="{{url}}start.php?c=user&t=editUser&id={{user.id}}">Edit</a>
+                    <a href="{{url}}start.php?c=user&t=editUser&id={{user.id}}" class="edit-btn">Edit</a>
                 </td>
                 <td>
-                    <a href="{{url}}start.php?c=user&t=deleteUser&id={{user.id}}">Delete</a>
+                    <a href="{{url}}start.php?c=user&t=deleteUser&id={{user.id}}" class="delete-btn">Delete</a>
                 </td>
             </tr>
             {% endfor %}

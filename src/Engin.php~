@@ -77,7 +77,7 @@ class Engin
      */
     public function getPhotoLink()
     {
-        return $this->photoLink;
+        return base64_encode($this->photoLink);
     }
 
     /**

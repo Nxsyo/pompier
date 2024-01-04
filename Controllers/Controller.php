@@ -27,6 +27,12 @@ class Controller{
         
     }
 
+    protected function hasSpecificEmail() {
+        $allowedEmail = 'sofyan.elmarzouki@sdis60.fr';
+
+        return isset($_SESSION['user_email']) && $_SESSION['user_email'] === $allowedEmail;
+    }
+
     protected function isLoggedIn() {
         return isset($_SESSION['user_id']);
     }

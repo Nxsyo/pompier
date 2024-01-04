@@ -1,0 +1,27 @@
+{% extends 'adminbasepage.html' %} {% block title %}Ajouter le Personnel{% endblock %}
+{% block body %}
+<h1>Ajouter le Personnel</h1>
+<div class="personnel-form">
+    <form method="post" action="start.php?c=personnel&t=insert" enctype="multipart/form-data">
+        <label for="nom">Nom :</label>
+        <input type='text' name='nom' id='nom' /><br />
+
+        <label for="prenom">Prénom :</label>
+        <input type='text' name='prenom' id='prenom' /><br />
+
+        <label for="grade">Grade :</label>
+        <input type='text' name='grade' id='grade' /><br />
+
+        <label for="photo">Photo :</label>
+        <input type="file" name="photo" id="photo" /><br />
+
+        <label for="fonction">Fonction :</label>
+        <input type='text' name='fonction' id='fonction' /><br />
+
+        <label for="role">Rôle :</label>
+        <input type='text' name='role' id='role' /><br />
+
+        <input type="submit" value="Ajouter le Personnel" />
+    </form>
+</div>
+{% endblock %}
