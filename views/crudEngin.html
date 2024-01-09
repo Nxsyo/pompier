@@ -1,6 +1,7 @@
 {% extends 'adminbasepage.html' %}
 
 {% block body %}
+
     <div class="top-page">
         <a href="{{url}}start.php?c=user&t=admindisplay"><img width="225px"src="http://195.154.118.169/sofyan/pompier/views/logo_nso.png" class="logo-navbar"/></a>
         <nav class="navbar">
@@ -10,11 +11,6 @@
             <a href="{{url}}start.php?c=personnel&t=panelpersonnel" class="nav-link">Personnels</a>
         </nav>
     </div>
-    
-    <!-- <div class="home-content">
-        <img width=20px src="http://195.154.118.169/sofyan/pompier/views/home-icons.png" alt="Icone Home" class="icon-home" />
-        <a href="{{url}}start.php?c=user&t=admindisplay" class="home-btn">Page d'accueil</a>
-    </div> -->
     <h1>Liste des Engins</h1>
     <a href="{{url}}start.php?c=engin&t=createEngin" class="create-link">Create</a><p><br /></p>
     <table id="enginsTable">
