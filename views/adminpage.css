@@ -6,12 +6,12 @@ body {
 }
 
 .header-basepage {
-    display: flex;
-    margin-right: 6%;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    margin-top: 3%; 
+        display: flex;
+        margin-right: 6%;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        margin-top: 3%; 
 }
 
 .logo_nso   {
@@ -256,8 +256,24 @@ h1 {
 
     h1 {    
         top: 50px;
-        color: #343a40;
-        text-align: center;
         margin: 20px 0px 30px;
+        margin-top: 60px;
+        font-size: 25px;
     }
+
+    .logout-btn {
+        top: 2%;
+        right : 4%;
+        font-size: 60%;
+        padding: 10px 20px;
+    }
+    .header-basepage {
+        margin-top: 35px;
+
+    }
+
+    .card-link {
+        padding: 10px 10px;
+    }
+
   }
