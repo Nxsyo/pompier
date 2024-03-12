@@ -80,12 +80,15 @@ class MaterielController extends Controller{
     public function updateMateriel($params) {
         $em = $params['em'];
         $id = $params['post']['id'];
-    
         $materiel = $em->find('Materiel', $id);
     
         $materiel->setNom($params['post']['nom']);
         $materiel->setDescription($params['post']['description']);
-        $materiel->setPhotoLink(file_get_contents($_FILES['photoLink']['tmp_name']));
+
+        if (!empty($_FILES['nouvellePhoto']['tmp_name'])) {
+            $photoLink = file_get_contents($_FILES['nouvellePhoto']['tmp_name']);
+            $materiel->setPhotoLink($photoLink);
+        }
     
         $enginId = $params['post']['engin'];
         $engin = $em->find('Engin', $enginId);

@@ -18,6 +18,20 @@ class EnginController extends Controller{
         }
     }
 
+    public function engindata($params) {
+        $entityManager = $params["em"];
+        $enginRepository = $entityManager->getRepository('Engin');
+        $engins = $enginRepository->findAll();
+        
+        $result = array();
+        foreach ($engins as $engin) {
+            array_push($result,$engin->getFullNom());
+            array_push($result,$engin->getAbrNom());
+            array_push($result,$engin->getPhotoLink());
+        }
+        echo json_encode($result);
+    }
+
 
     public function createEngin() {
         if ($this->isLoggedIn()) {
@@ -58,23 +72,24 @@ class EnginController extends Controller{
     }
 
     public function updateEngin($params) {
-
         $em = $params['em'];
-        $id =($params['post']['id']);
-    
+        $id = $params['post']['id'];
         $engin = $em->find('Engin', $id);
     
         $engin->setFullNom($params['post']['nom_engin']);
         $engin->setAbrNom($params['post']['nom_abr']);
-        $engin->setPhotoLink(file_get_contents($_FILES['photoLink']['tmp_name']));
     
-        
-            $em->flush();
-        
-            header('Location: start.php?c=engin&t=panelengin');
-            exit();
-
+        if (!empty($_FILES['nouvellePhoto']['tmp_name'])) {
+            $photoLink = file_get_contents($_FILES['nouvellePhoto']['tmp_name']);
+            $engin->setPhotoLink($photoLink);
+        }
+    
+        $em->flush();
+    
+        header('Location: start.php?c=engin&t=panelengin');
+        exit();
     }
+    
 
     public function deleteEngin($params) {
         $id=($params['get']['id']);

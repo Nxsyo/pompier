@@ -21,8 +21,10 @@
       {% endfor %}
     </select><br />
 
-      <label for="photoLink">Photo :</label>
-      <input type="file" name="photoLink" id="photoLink" value="{{ materiel.photoLink  }}" /><br />
+      <label for="photoLink">Modifier La Photo :</label><img src="{{ materiel.photoLink }}" />
+      <input type="hidden" name="photoLink_actuelle" value="{{ materiel.photoLink }}" />
+      <input type="file" name="nouvellePhoto" id="nouvellePhoto" /><br />
+      <br />
 
       <input type="submit" value="Modifier le Materiel" />
   </form>

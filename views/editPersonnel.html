@@ -14,8 +14,10 @@
         <label for="grade">Grade :</label>
         <input type="text" name="grade" id="grade" value="{{ personnel.grade }}" /><br />
 
-        <label for="photo">Photo :</label>
-        <input type="file" name="photo" id="photo" value="{{ personnel.photo }}" /><br />
+        <label for="photo">Modifier La Photo :</label><img src="{{ personnel.photo }}" />
+        <input type="hidden" name="photoLink_actuelle" value="{{ personnel.photo }}" />
+        <input type="file" name="nouvellePhoto" id="nouvellePhoto" /><br />
+        <br />
 
         <label for="fonction">Fonction :</label>
         <input type="text" name="fonction" id="fonction" value="{{ personnel.fonction }}" /><br />

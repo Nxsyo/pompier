@@ -74,9 +74,13 @@ class PersonnelController extends Controller
         $personnel->setNom($params['post']['nom']);
         $personnel->setPrenom($params['post']['prenom']);
         $personnel->setGrade($params['post']['grade']);
-        $personnel->setPhoto(file_get_contents($_FILES['photo']['tmp_name']));
         $personnel->setFonction($params['post']['fonction']);
         $personnel->setRole($params['post']['role']);
+
+        if (!empty($_FILES['nouvellePhoto']['tmp_name'])) {
+            $photo = file_get_contents($_FILES['nouvellePhoto']['tmp_name']);
+            $personnel->setPhoto($photo);
+        }
     
         
             $em->flush();
