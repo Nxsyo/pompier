@@ -1,0 +1,23 @@
+{% extends "adminbasepage.html" %} {% block title %} Modifier la Galerie {% endblock%}
+{% block body %}
+<div class="editGalerie-form">
+    <h1>Modifier la Galerie</h1>
+    <form method="post" action="start.php?c=galerie&t=updateGalerie" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="{{ galerie.id }}" />
+        
+        <label for="titre">Titre de l'intervention :</label>
+        <input type="text" name="titre" id="titre" value="{{ galerie.titre }}" /><br />
+
+        <label for="description">Description de l'intervention :</label>
+        <input type="text" name="description" id="description" value="{{ galerie.description }}" /><br />
+
+        <label for="photoLink">Modifier La Photo :</label><img src="{{ galerie.photoLink }}" />
+        <input type="hidden" name="photoLink_actuelle" value="{{ galerie.photoLink }}" />
+        <input type="file" name="nouvellePhoto" id="nouvellePhoto" /><br />
+        <br />
+
+        <input type="submit" value="Enregistrer les modifications" />
+    </form>
+</div>
+
+{% endblock %}

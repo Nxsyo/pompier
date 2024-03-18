@@ -1,0 +1,18 @@
+{% extends 'adminbasepage.html' %} {% block title %} Insérer une Photo {% endblock %}
+{% block body %}
+<h1>Insérer une photo dans la galerie</h1>
+<div class="galerie-form">
+    <form method="post" action="start.php?c=galerie&t=insert" enctype="multipart/form-data">
+        <label for="titre">Titre de l'image :</label>
+        <input type='text' name='titre' id='titre' /><br />
+
+        <label for="description">Description :</label>
+        <input type='text' name='description' id='description' /><br />
+
+        <label for="photoLink">Photo :</label>
+        <input type="file" name="photoLink" id="photoLink" /><br />
+
+        <input type="submit" value="Insérer l'image" />
+    </form>
+</div>
+{% endblock %}

@@ -11,31 +11,31 @@
             <a href="{{url}}start.php?c=galerie&t=panelgalerie" class="nav-link">Galerie</a>
         </nav>
     </div>
-    <h1>Liste des Engins</h1>
-    <a href="{{url}}start.php?c=engin&t=createEngin" class="create-link">Create</a><p><br /></p>
-    <table id="enginsTable">
+    <h1>Galerie Photo</h1>
+    <a href="{{url}}start.php?c=galerie&t=createGalerie" class="create-link">Create</a><p><br /></p>
+    <table id="galeriesTable">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Nom</th>
-                <th>Nom abrégé</th>
+                <th>Titre</th>
+                <th>Description</th>
                 <th>Photo</th>
                 <th></th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            {% for engin in engins %}
+            {% for galerie in galeries %}
             <tr>
-                <td>{{ engin.id }}</td>
-                <td>{{ engin.fullnom }}</td>
-                <td>{{ engin.abrNom }}</td>
-                <td><img width=100px src="data:image/png;base64,{{ engin.photoLink }}"/></td>
+                <td>{{ galerie.id }}</td>
+                <td>{{ galerie.titre }}</td>
+                <td>{{ galerie.description }}</td>
+                <td><img width=100px src="data:image/png;base64,{{ galerie.photoLink }}"/></td>
                 <td>
-                    <a href="{{url}}start.php?c=engin&t=editEngin&id={{engin.id}}" class="edit-btn">Edit</a>
+                    <a href="{{url}}start.php?c=galerie&t=editGalerie&id={{galerie.id}}" class="edit-btn">Edit</a>
                 </td>
                 <td>
-                    <a href="{{url}}start.php?c=engin&t=deleteEngin&id={{engin.id}}" class="delete-btn">Delete</a>
+                    <a href="{{url}}start.php?c=galerie&t=deleteGalerie&id={{galerie.id}}" class="delete-btn">Delete</a>
                 </td>
             </tr>
             {% endfor %}
@@ -45,7 +45,7 @@
     {% block javascript %}
         <script>
             $(document).ready(function () {
-                $("#enginsTable").DataTable();
+                $("#galeriesTable").DataTable();
             });
         </script>
     {% endblock %}

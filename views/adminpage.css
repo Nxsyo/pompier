@@ -55,7 +55,8 @@ h1 {
 .user-card,
 .engin-card,
 .materiel-card,
-.personnel-card {
+.personnel-card,
+.galerie-card {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     position: relative;
     width: 300px;
@@ -87,7 +88,8 @@ h1 {
 .user-card::before,
 .engin-card::before,
 .materiel-card::before,
-.personnel-card::before {
+.personnel-card::before,
+.galerie-card:before {
     content: "";
     position: absolute;
     top: 0;
@@ -123,10 +125,17 @@ h1 {
     transition: transform 0.3s ease;
 }
 
+.galerie-card {
+    background-image: url("http://195.154.118.169/sofyan/pompier/views/galerie-inter.jpg");
+    background-size: cover;
+    transition: transform 0.3s ease;
+}
+
 .user-card:hover,
 .engin-card:hover,
 .materiel-card:hover,
-.personnel-card:hover {
+.personnel-card:hover,
+.galerie-card:hover {
     transform: translateY(-5px);
 }
 
