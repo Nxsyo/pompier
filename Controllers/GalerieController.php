@@ -89,6 +89,24 @@ class GalerieController extends Controller{
             header('Location: start.php?c=user&t=login');
         }
     }
+
+    public function galeriedata($params) {
+        $entityManager = $params["em"];
+        $galerieRepository = $entityManager->getRepository('Galerie');
+        $galeries = $galerieRepository->findAll();
+        
+        $result = array();
+        foreach ($galeries as $galerie) {
+            $galleryData = array(
+                "titre" => $galerie->getTitre(),
+                "description" => $galerie->getDescription(),
+                "photoLink" => $galerie->getPhotoLink()
+            );
+            array_push($result, $galleryData);
+        }
+        echo json_encode($result);
+    }
+    
     
 }
 
