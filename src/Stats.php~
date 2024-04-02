@@ -1,0 +1,26 @@
+<?php
+// src/Product.php
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\ManyToOne;
+
+#[ORM\Entity]
+#[ORM\Table(name: 'stats')]
+class Stats
+{
+    #[ORM\Id]
+    #[ORM\Column(type: 'integer')]
+    #[ORM\GeneratedValue]
+    private int|null $id = null;
+    #[ORM\Column(type: 'string')]
+    private string $titre;
+    #[ORM\Column(type: 'string')]
+    private string $chiffre;
+    #[ORM\Column(type: 'string')]
+    private string $short_desc;
+    #[ORM\Column(type: 'string')]
+    private string $long_desc;
+    #[ORM\Column(type: 'string')]
+    private string $icon;
+
+}

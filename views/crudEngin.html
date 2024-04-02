@@ -7,7 +7,7 @@
         <nav class="navbar">
             <a href="{{url}}start.php?c=user&t=panelusers" class="nav-link">Utilisateurs</a>
             <a href="{{url}}start.php?c=engin&t=panelengin" class="nav-link">Engins</a>
-            <a href="{{url}}start.php?c=materiel&t=panelmateriel" class="nav-link">Materiels</a>
+            <a href="{{url}}start.php?c=stats&t=panelstats" class="nav-link">Statistiques</a>
             <a href="{{url}}start.php?c=galerie&t=panelgalerie" class="nav-link">Galerie</a>
         </nav>
     </div>
@@ -19,6 +19,7 @@
                 <th>Id</th>
                 <th>Nom</th>
                 <th>Nom abrégé</th>
+                <th>Description</th>
                 <th>Photo</th>
                 <th></th>
                 <th></th>
@@ -30,6 +31,7 @@
                 <td>{{ engin.id }}</td>
                 <td>{{ engin.fullnom }}</td>
                 <td>{{ engin.abrNom }}</td>
+                <td>{{ engin.description }}</td>
                 <td><img width=100px src="data:image/png;base64,{{ engin.photoLink }}"/></td>
                 <td>
                     <a href="{{url}}start.php?c=engin&t=editEngin&id={{engin.id}}" class="edit-btn">Edit</a>

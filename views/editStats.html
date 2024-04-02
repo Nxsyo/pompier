@@ -1,0 +1,28 @@
+{% extends "adminbasepage.html" %} {% block title %} Modifier la statistique {% endblock%}
+{% block body %}
+<div class="editEngin-form">
+    <h1>Modifier la statistique</h1>
+    <form method="post" action="start.php?c=stats&t=updatestats" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="{{ stats.id }}" />
+        
+        <label for="titre">Titre :</label>
+        <input type="text" name="titre" id="titre" value="{{ stats.titre }}" /><br />
+
+        <label for="chiffre">Chiffre :</label>
+        <input type="text" name="chiffre" id="chiffre" value="{{ stats.chiffre }}" /><br />
+
+        <label for="short_desc">Description courte :</label>
+        <input type="text" name="short_desc" id="short_desc" value="{{ stats.shortdesc }}" /><br />
+
+        <label for="long_desc">Description longue :</label>
+        <input type="text" name="long_desc" id="long_desc" value="{{ stats.longdesc }}" /><br />
+
+        <label for="icon">Icon :</label>
+        <input type="text" name="icon" id="icon" value="{{ stats.icon }}" /><br />
+        <br />
+
+        <input type="submit" value="Enregistrer les modifications" />
+    </form>
+</div>
+
+{% endblock %}

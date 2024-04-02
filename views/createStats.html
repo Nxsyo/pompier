@@ -1,0 +1,25 @@
+{% extends 'adminbasepage.html' %} {% block title %} Créer Une Statistique {% endblock %}
+{% block body %}
+<h1>Créer une nouvelle statistique</h1>
+<div class="stats-form">
+    <form method="post" action="start.php?c=stats&t=insert" enctype="multipart/form-data">
+        <label for="titre">Titre :</label>
+        <input type='text' name='titre' id='titre' /><br />
+
+        <label for="chiffre">Chiffre :</label>
+        <input type='text' name='chiffre' id='chiffre' /><br />
+
+        <label for="short_desc">Description courte :</label>
+        <textarea name="short_desc" id="short_desc" style='width: 200px; height: 100px;' maxlength="110" ></textarea>
+        <small>Maximum 110 caractères.</small> <br />
+
+        <label for="long_desc">Description longue :</label>
+        <textarea name="long_desc" id="long_desc" style='width: 200px; height: 100px;'></textarea><br />
+
+        <label for="icon">Icon :</label>
+        <input type='text' name='icon' id='icon' /><br />
+
+        <input type="submit" value="Créer la statistique" />
+    </form>
+</div>
+{% endblock %}

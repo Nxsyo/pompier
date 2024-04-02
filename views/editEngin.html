@@ -11,6 +11,9 @@
         <label for="nom_abr">Abréviation :</label>
         <input type="text" name="nom_abr" id="nom_abr" value="{{ engin.abrNom }}" /><br />
 
+        <label for="description">Description :</label>
+        <input type="text" name="description" id="description" value="{{ engin.description }}" /><br />
+
         <label for="photoLink">Modifier La Photo :</label><img src="{{ engin.photoLink }}" />
         <input type="hidden" name="photoLink_actuelle" value="{{ engin.photoLink }}" />
         <input type="file" name="nouvellePhoto" id="nouvellePhoto" /><br />

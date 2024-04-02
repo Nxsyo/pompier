@@ -18,6 +18,8 @@ class Engin
     private string $photoLink;
     #[ORM\Column(type: 'string')]
     private string $abr_nom;
+    #[ORM\Column(type: 'string')]
+    private string $description;
     #[OneToMany(mappedBy: 'engin', targetEntity: Materiel::class)]
     private Collection $materiels;
 
@@ -102,5 +104,29 @@ class Engin
     public function getAbrNom()
     {
         return $this->abr_nom;
+    }
+
+    /**
+     * Set description.
+     *
+     * @param string $description
+     *
+     * @return Engin
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description.
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

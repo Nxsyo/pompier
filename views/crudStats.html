@@ -1,0 +1,54 @@
+{% extends 'adminbasepage.html' %}
+
+{% block body %}
+
+    <div class="top-page">
+        <a href="{{url}}start.php?c=user&t=admindisplay"><img width="225px"src="http://195.154.118.169/sofyan/pompier/views/logo_nso.png" class="logo-navbar"/></a>
+        <nav class="navbar">
+            <a href="{{url}}start.php?c=user&t=panelusers" class="nav-link">Utilisateurs</a>
+            <a href="{{url}}start.php?c=engin&t=panelengin" class="nav-link">Engins</a>
+            <a href="{{url}}start.php?c=stats&t=panelstats" class="nav-link">Statistiques</a>
+            <a href="{{url}}start.php?c=galerie&t=panelgalerie" class="nav-link">Galerie</a>
+        </nav>
+    </div>
+    <h1>Liste des Statistiques</h1>
+    <a href="{{url}}start.php?c=stats&t=createstats" class="create-link">Create</a><p><br /></p>
+    <table id="statsTable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Chiffre</th>
+                <th>Description</th>
+                <th>Icon</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stat in stats %}
+            <tr>
+                <td>{{ stat.id }}</td>
+                <td>{{ stat.titre }}</td>
+                <td>{{ stat.chiffre }}</td>
+                <td>{{ stat.longdesc }}</td>
+                <td>{{ stat.icon }}</td>
+                <td>
+                    <a href="{{url}}start.php?c=stats&t=editstats&id={{stat.id}}" class="edit-btn">Edit</a>
+                </td>
+                <td>
+                    <a href="{{url}}start.php?c=stats&t=deletestats&id={{stat.id}}" class="delete-btn">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% block javascript %}
+        <script>
+            $(document).ready(function () {
+                $("#statsTable").DataTable();
+            });
+        </script>
+    {% endblock %}
+{% endblock %}

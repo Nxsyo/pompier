@@ -25,9 +25,13 @@ class EnginController extends Controller{
         
         $result = array();
         foreach ($engins as $engin) {
-            array_push($result,$engin->getFullNom());
-            array_push($result,$engin->getAbrNom());
-            array_push($result,$engin->getPhotoLink());
+            $engindata = array(
+                "full_nom" => $engin->getFullNom(),
+                "abr_nom" => $engin->getAbrNom(),
+                "description" =>$engin->getDescription(),
+                "photoLink" => $engin->getPhotoLink()
+            );
+            array_push($result, $engindata);
         }
         echo json_encode($result);
     }
@@ -46,11 +50,13 @@ class EnginController extends Controller{
 
         $nom=($_POST['full_nom']);
         $abrnom=($_POST['abr_nom']);
+        $description=($_POST['description']);
         $photoLink=file_get_contents($_FILES['photoLink']['tmp_name']);
 
         $newEngin = new Engin();
         $newEngin->setFullNom($nom);
         $newEngin->setAbrNom($abrnom);
+        $newEngin->setDescription($description);
         $newEngin->setPhotoLink($photoLink);
 
         $em->persist($newEngin);
@@ -78,6 +84,7 @@ class EnginController extends Controller{
     
         $engin->setFullNom($params['post']['nom_engin']);
         $engin->setAbrNom($params['post']['nom_abr']);
+        $engin->setDescription($params['post']['description']);
     
         if (!empty($_FILES['nouvellePhoto']['tmp_name'])) {
             $photoLink = file_get_contents($_FILES['nouvellePhoto']['tmp_name']);
